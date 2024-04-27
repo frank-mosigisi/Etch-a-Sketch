@@ -2,6 +2,7 @@ const gridcontainer = document.querySelector('#container')
 const clearButton = document.querySelector('.clearbutton')
 const newGameButton = document.querySelector('.newGamebutton')
 
+
 let defaultSquares = 16;
 
 function fullGrid (gridCount){
@@ -28,7 +29,7 @@ function applyHoverEffect() {
     const squares = document.querySelectorAll('.square');   
     squares.forEach((square) => {
         square.addEventListener('mouseenter', (e) => {
-            e.target.classList.add('active')
+            e.target.style.backgroundColor= getRandomColor();
         });
     });
 
@@ -37,15 +38,19 @@ function applyHoverEffect() {
     // is created too
     clearButton.addEventListener('click', ()=>{
         squares.forEach((square) => {
-                square.classList.remove('active')
+            square.style.backgroundColor= '';
             });
     })
 }
 
-
-
-
-
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 function generateNewGrid() {
 
