@@ -1,6 +1,6 @@
 const gridcontainer = document.querySelector('#container')
-const clearButton = document.querySelector('.clearbutton')
-const newGameButton = document.querySelector('.newGamebutton')
+const clearButton = document.querySelector('.clearButton')
+const newSketchButton = document.querySelector('.newSketchButton')
 
 
 let defaultSquares = 16;
@@ -33,15 +33,12 @@ function applyHoverEffect() {
         });
     });
 
-    // added the clear button event listener too inside the
-    // function so that it can also be reapplied when a new grid 
-    // is created too
     clearButton.addEventListener('click', ()=>{
         squares.forEach((square) => {
             square.style.backgroundColor= '';
-            });
-    })
-}
+        });
+    });
+};
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -58,33 +55,37 @@ function generateNewGrid() {
 
     while(true){
 
-        number = prompt ('Hello player one, enter the number of squares per side for the new grid'
+        number = prompt ('Hello player one, enter the number of squares per side for the new grid.'
                            + ' Enter a number less than 101.' , '')
-        if (number=== null || number === ''){
+        if (number=== null || number === ''){ //if nothing is entered the default sqaures are used
             number = defaultSquares;
             break;
         }
-
+        // converting the number entered into an integer
         number = Number(number);
+
         if (Number.isNaN(number)){
             alert ('please enter a valid number!');
         }
         else if (number > 100 || number < 1){
-            alert('You entered a number over 101 or less than 1! Try again. Thanks');
+            alert('You entered a number over 101 or less than 1. Try again !!!');
 
-        }else{
+        } else {
             break;
         }
     }
+    // this while loop clears the gridcontainer in preparation for the new grid
     while (gridcontainer.firstChild) {
         gridcontainer.removeChild(gridcontainer.firstChild);
     
-    }
-    fullGrid(number)
-    applyHoverEffect()
+    };
 
-}
-newGameButton.addEventListener('click', generateNewGrid);
+    fullGrid(number);
+    applyHoverEffect();
+
+};
+
+newSketchButton.addEventListener('click', generateNewGrid);
     
 
 
