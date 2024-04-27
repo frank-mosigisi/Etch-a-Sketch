@@ -1,4 +1,5 @@
 const gridcontainer = document.querySelector('#container')
+const button =document.createElement('button')
 
 function fullGrid (gridCount){
 
@@ -17,12 +18,16 @@ function fullGrid (gridCount){
     }
 }
 
-fullGrid(17)
+fullGrid(16);
 
-let item = document.querySelector('square')
-item.addEventListener('mouseover',changeColor);
+const squares = document.querySelectorAll('.square');
 
-function changeColor(){
-    let item = document.querySelector('square')
-    item.setAttribute("style", "background-color:blue;")
-}
+squares.forEach((square) => {
+    square.addEventListener('mouseenter', (e) => {
+        e.target.style.backgroundColor = 'purple';
+    });
+});
+
+
+
+
