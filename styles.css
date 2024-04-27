@@ -1,0 +1,22 @@
+#container{
+    display: flex;
+    flex-wrap: wrap;
+    border: black solid 1px;
+    width: 400px;
+    height: 600px;
+    
+}
+
+.gridItem {
+    display: flex;
+    width: 100%;
+}
+
+.square{
+    border: #444242 solid 1px;
+    height: 100%;
+}
+
+.square:hover{
+    color: yellow
+}
