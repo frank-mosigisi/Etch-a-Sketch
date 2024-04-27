@@ -1,5 +1,5 @@
 const gridcontainer = document.querySelector('#container')
-const button =document.createElement('button')
+const clearButton = document.querySelector('.clearbutton')
 
 function fullGrid (gridCount){
 
@@ -24,10 +24,16 @@ const squares = document.querySelectorAll('.square');
 
 squares.forEach((square) => {
     square.addEventListener('mouseenter', (e) => {
-        e.target.style.backgroundColor = 'purple';
+        e.target.classList.add('active')
     });
 });
 
+clearButton.addEventListener('click', ()=>{
+    squares.forEach((square) => {
+            square.classList.remove('active')
+        });
+    })
+    
 
 
 
